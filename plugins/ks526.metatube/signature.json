@@ -18,12 +18,12 @@
  },
  "payload": {
   "plugin_id": "ks526.metatube",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "files": {
-   "README.md": "0cc3765535da5f0e73d913ea7cee841bde977566717c21a4c78d266baac089eb",
-   "encrypted.json": "1bf8176bf1a4a77bc5d7f0153eac66301b696b30672f32d256e856cc71718404",
-   "manifest.json": "558a29a01c0d0337a50c88984781a52650505bce78d176b5ebd871a51c824471"
+   "README.md": "1dabd9ed81f7272750bfaf1c20051324fbd0f85cd0935a8fa0a31d892ec56e65",
+   "encrypted.json": "7032ece0ee1a927c23f84a868758dfbfb6d8f14add9983f9ac5c8254b43d69b5",
+   "manifest.json": "c7f5f246280cce715386c7d080893ec0125d4f78db54a0c2232e5528d55da2af"
   }
  },
- "signature": "APphZ6PIfgpWyMYyc3rTIH1dFyyKStxGUE/dSf72C2+Enh/ln5CGldR5oRLDk5086qR1ZSMzi6J+i8CouCHeBg=="
+ "signature": "sSJx9QEaJlAhD3opFHVvjBbMs9Khurn5fcUL80dTQyq1z3VsKVGg8Ox9HBK1QWyn+XzbN1ENenzlt9K/y71+Bg=="
 }

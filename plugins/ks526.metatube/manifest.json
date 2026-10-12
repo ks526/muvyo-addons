@@ -2,18 +2,43 @@
   "api": 1,
   "id": "ks526.metatube",
   "name": "MetaTube 刮削",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "ks526",
   "description": "把自建 MetaTube 服务接入 Vyo 媒体库，作为第三方刮削来源：按番号或关键词搜索，补全标题、简介、出演、导演、片商、系列、类别、评分，以及海报、背景图和详情图。可选中文字幕角标与自动翻译（标题/简介翻成中文）。",
   "permissions": {
-    "domains": [],
+    "domains": [
+      "*.javbus.com",
+      "pic.duga.jp",
+      "*.dmm.co.jp",
+      "*.faleno.net",
+      "*.fc2.com",
+      "www.1pondo.tv",
+      "www.10musume.com",
+      "www.c0930.com",
+      "www.h0930.com",
+      "www.h4610.com",
+      "www.caribbeancom.com",
+      "www.caribbeancompr.com",
+      "www.heyzo.com",
+      "*.heydouga.com",
+      "www.muramura.tv",
+      "*.mywife.cc",
+      "www.pacopacomama.com",
+      "*.tokyo-hot.com",
+      "img.pcolle.com",
+      "dl.getchu.com",
+      "*.aventertainments.com",
+      "*.mgstage.com",
+      "*.sod.co.jp",
+      "*.kin8tengoku.com"
+    ],
     "service": {"label": "MetaTube 服务地址", "help": "你部署的 MetaTube 后端，例如 http://192.168.1.10:8080（内网地址需要在安装确认时勾选放行）"}
   },
   "config": [
     {"key": "token", "label": "后端密钥", "type": "secret", "help": "MetaTube 设置了 TOKEN 时填写；未设置就留空"},
     {"key": "provider", "label": "限定数据源", "type": "text", "placeholder": "留空 = 全部", "help": "只从指定站点搜索，例如 JavBus、FANZA、AVE。全部站点逐个查询较慢（约 10 秒），限定一个可明显加快"},
     {"key": "overview_extra", "label": "简介附加信息", "type": "bool", "default": "true", "help": "官方简介为空或过短时，用番号、片商、系列、出演、类别拼一段说明"},
-    {"key": "badge", "label": "中文字幕角标", "type": "bool", "default": "false", "help": "在封面图左上角叠加「中文字幕」角标，由 MetaTube 服务端绘制，背景图不加"},
+    {"key": "badge", "label": "中文字幕角标", "type": "bool", "default": "false", "help": "在封面图左上角叠加「中文字幕」角标；由 MetaTube 服务端绘制，需要服务地址是 https 才能在 Vyo 里显示（http 服务地址的图片会被 Vyo 丢弃）"},
     {"key": "badge_url", "label": "角标图片", "type": "text", "default": "zimu.png", "placeholder": "zimu.png", "help": "MetaTube 内置：zimu.png（中文字幕）、u.png、uc.png；也可填自己的图片地址"},
     {"key": "translate", "label": "自动翻译", "type": "bool", "default": "false", "help": "由 MetaTube 服务端翻译标题/简介，翻译失败时保留原文"},
     {"key": "translate_mode", "label": "翻译内容", "type": "select", "default": "Both", "options": [{"value": "Both", "label": "标题和简介"}, {"value": "Title", "label": "仅标题"}, {"value": "Summary", "label": "仅简介"}]},
@@ -27,14 +52,14 @@
     {"key": "openai_model", "label": "OpenAI 模型", "type": "text", "placeholder": "gpt-4o-mini", "help": "留空使用服务端默认模型"}
   ],
   "settings": {
-    "description": "用 MetaTube 给 Vyo 媒体库刮削资料。先在「推送渠道」同级的插件设置里填好服务地址；之后在 Vyo 媒体库的扫描设置里把「资料来源」改为本插件，或在条目上手动「重新识别」时选择。\n\n图片通过 MetaTube 自带的图片代理取回（/v1/images/…），同样来自你填写的服务地址；中文字幕角标与自动翻译也由 MetaTube 服务端完成。",
+    "description": "用 MetaTube 给 Vyo 媒体库刮削资料。先在「推送渠道」同级的插件设置里填好服务地址；之后在 Vyo 媒体库的扫描设置里把「资料来源」改为本插件，或在条目上手动「重新识别」时选择。\n\n封面/背景直接用 MetaTube 数据里各站点的 https 图片（自动带防盗链 Referer）；服务地址本身是 https 时改用 MetaTube 图片代理，才能叠加中文字幕角标。自动翻译同样由 MetaTube 服务端完成。",
     "links": [
       {"title": "MetaTube 项目", "url": "https://github.com/metatube-community"}
     ],
     "sections": [
       {"title": "服务", "fields": ["token", "provider"]},
       {"title": "资料", "fields": ["overview_extra"]},
-      {"title": "图片", "description": "角标由 MetaTube 服务端叠加在封面上，取图时生效。", "fields": ["badge", "badge_url"]},
+      {"title": "图片", "description": "角标由 MetaTube 服务端叠加在封面上；服务地址是 http 时角标不会显示（Vyo 只收 https 图片）。", "fields": ["badge", "badge_url"]},
       {"title": "翻译", "description": "自动翻译用 MetaTube 的翻译接口；搜索结果最多翻译前 5 条标题，补全资料时按上面的「翻译内容」处理。", "fields": ["translate", "translate_mode", "translate_engine", "translate_to"]},
       {"title": "翻译密钥", "description": "只有选了对应引擎才需要填写。", "fields": ["google_api_key", "baidu_app_id", "baidu_app_key", "deepl_api_key", "openai_api_key", "openai_model"]}
     ]
