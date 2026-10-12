@@ -1,0 +1,30 @@
+{
+  "api": 1,
+  "id": "ks526.metatube",
+  "name": "MetaTube 刮削",
+  "version": "1.0.0",
+  "author": "ks526",
+  "description": "把自建 MetaTube 服务接入 Vyo 媒体库，作为第三方刮削来源：按番号或关键词搜索，补全标题、简介、出演、导演、片商、系列、类别、评分，以及海报、背景图和详情图。",
+  "permissions": {
+    "domains": [],
+    "service": {"label": "MetaTube 服务地址", "help": "你部署的 MetaTube 后端，例如 http://192.168.1.10:8080（内网地址需要在安装确认时勾选放行）"}
+  },
+  "config": [
+    {"key": "token", "label": "后端密钥", "type": "secret", "help": "MetaTube 设置了 TOKEN 时填写；未设置就留空"},
+    {"key": "provider", "label": "限定数据源", "type": "text", "placeholder": "留空 = 全部", "help": "只从指定站点搜索，例如 JavBus、FANZA、AVE。全部站点逐个查询较慢（约 10 秒），限定一个可明显加快"},
+    {"key": "overview_extra", "label": "简介附加信息", "type": "bool", "default": "true", "help": "官方简介为空或过短时，用番号、片商、系列、出演、类别拼一段说明"}
+  ],
+  "settings": {
+    "description": "用 MetaTube 给 Vyo 媒体库刮削资料。先在「推送渠道」同级的插件设置里填好服务地址；之后在 Vyo 媒体库的扫描设置里把「资料来源」改为本插件，或在条目上手动「重新识别」时选择。\n\n图片通过 MetaTube 自带的图片代理取回（/v1/images/…），同样来自你填写的服务地址。",
+    "links": [
+      {"title": "MetaTube 项目", "url": "https://github.com/metatube-community"}
+    ],
+    "sections": [
+      {"title": "服务", "fields": ["token", "provider"]},
+      {"title": "资料", "fields": ["overview_extra"]}
+    ]
+  },
+  "capabilities": {
+    "metadata": {"media_types": ["movie"]}
+  }
+}

@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "certificate": {
+  "certificate": {
+   "aud": "mediavault-addon-author",
+   "version": 1,
+   "serial": 11,
+   "author_id": "gh-42717739",
+   "author": "ks526",
+   "namespace": "ks526",
+   "public_key": "5gAp0EZbTTeJhIrMFXRhONXkTtPbTLSrAxd+HnvkGU0=",
+   "issued_at": 1791794806,
+   "expires_at": 1823330806,
+   "content_key": "j3INE40dqfs/nRXA+kr7daHWTQkaOXtufC1Irn4SEXc=",
+   "content_key_version": 1
+  },
+  "signature": "bX8BQxBoAHrke3OoKfuWClfWz3qjEm0+nwaaOFiUVjUFwkes6ta8EYwQe3Ba6/A+EWxbjMsSzRKxp1luPtZHAw=="
+ },
+ "payload": {
+  "plugin_id": "ks526.metatube",
+  "version": "1.0.0",
+  "files": {
+   "README.md": "a4e6cc7e6d157186a5549c299f956e0fdddff9d0b7b6c108ddcf71818a2398d9",
+   "encrypted.json": "415931c8265aa1aeb4cabb00dbc45b53c4b6b8980a822e63d905975eab7dcded",
+   "manifest.json": "c0d8a63d4eeef549ff5926a2ca9cffdcd22a154fab12866f7a659c467899b7be"
+  }
+ },
+ "signature": "g0YeE83hkHiaGQiA18+LGqNfFLHQkEJ2Prj8f5M7WUNq0swa8pJSuF6g8iXV2bANUFaVDZgjfkFDnwikSETSAA=="
+}
