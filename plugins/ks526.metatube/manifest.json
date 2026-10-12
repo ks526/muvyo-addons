@@ -2,7 +2,7 @@
   "api": 1,
   "id": "ks526.metatube",
   "name": "MetaTube 刮削",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "ks526",
   "description": "把自建 MetaTube 服务接入 Vyo 媒体库，作为第三方刮削来源：按番号或关键词搜索，补全标题、简介、出演、导演、片商、系列、类别、评分，以及海报、背景图和详情图。可选中文字幕角标与自动翻译（标题/简介翻成中文）。",
   "permissions": {
@@ -60,7 +60,7 @@
       {"title": "服务", "fields": ["token", "provider"]},
       {"title": "资料", "fields": ["overview_extra"]},
       {"title": "图片", "description": "角标由 MetaTube 服务端叠加在封面上；服务地址是 http 时角标不会显示（Vyo 只收 https 图片）。", "fields": ["badge", "badge_url"]},
-      {"title": "翻译", "description": "自动翻译用 MetaTube 的翻译接口；搜索结果最多翻译前 5 条标题，补全资料时按上面的「翻译内容」处理。", "fields": ["translate", "translate_mode", "translate_engine", "translate_to"]},
+      {"title": "翻译", "description": "自动翻译用 MetaTube 的翻译接口；搜索结果最多翻译前 2 条标题，补全资料时按上面的「翻译内容」处理。", "fields": ["translate", "translate_mode", "translate_engine", "translate_to"]},
       {"title": "翻译密钥", "description": "只有选了对应引擎才需要填写。", "fields": ["google_api_key", "baidu_app_id", "baidu_app_key", "deepl_api_key", "openai_api_key", "openai_model"]}
     ]
   },
