@@ -1,12 +1,12 @@
 {
  "name": "ks526 的 Muvyo 插件",
- "sequence": 2,
+ "sequence": 3,
  "plugins": [
   {
    "id": "ks526.metatube",
    "name": "MetaTube 刮削",
-   "version": "1.0.0",
-   "description": "把自建 MetaTube 服务接入 Vyo 媒体库，作为第三方刮削来源：按番号或关键词搜索，补全标题、简介、出演、导演、片商、系列、类别、评分，以及海报、背景图和详情图。",
+   "version": "1.0.1",
+   "description": "把自建 MetaTube 服务接入 Vyo 媒体库，作为第三方刮削来源：按番号或关键词搜索，补全标题、简介、出演、导演、片商、系列、类别、评分，以及海报、背景图和详情图。可选中文字幕角标与自动翻译（标题/简介翻成中文）。",
    "author": "ks526",
    "path": "plugins/ks526.metatube",
    "api": 1
